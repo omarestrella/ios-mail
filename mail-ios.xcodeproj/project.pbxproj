@@ -14,7 +14,7 @@
 		66D46D931C31B05F00E8F906 /* Pods_mail_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66D46D921C31B05F00E8F906 /* Pods_mail_ios.framework */; };
 		DD5F90ABBFB88EC2BF7FE2B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5F9CF9548C13CB2FF00763 /* AppDelegate.swift */; };
 		DD5F9145991B5EEEC8BD1C72 /* GmailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5F9D2BE0D25181404AD3F5 /* GmailModel.swift */; };
-		DD5F91E5E69B0C45AF5446B1 /* ComposeAddressSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5F94596DDF9AF172E97895 /* ComposeAddressSelectorView.swift */; };
+		DD5F91E5E69B0C45AF5446B1 /* ComposeAddressFromView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5F94596DDF9AF172E97895 /* ComposeAddressFromView.swift */; };
 		DD5F927D85EE13383951D764 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD5F997CB1CE5CCCD847AA23 /* Assets.xcassets */; };
 		DD5F961539E5539D79649C73 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DD5F9FCE8CB81C2A3DC4C78F /* Info.plist */; };
 		DD5F968BD3C9B56F058A532F /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DD5F94A6A5417BE0BFCC75DE /* Info.plist */; };
@@ -61,7 +61,7 @@
 		DD5F91D610C2AAE204D4F209 /* GmailMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GmailMessage.swift; sourceTree = "<group>"; };
 		DD5F923AF79F3B58B3980F7B /* GmailAuthenticator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GmailAuthenticator.swift; sourceTree = "<group>"; };
 		DD5F92CC4E1423D982C63D6F /* mail_iosTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mail_iosTests.swift; sourceTree = "<group>"; };
-		DD5F94596DDF9AF172E97895 /* ComposeAddressSelectorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposeAddressSelectorView.swift; sourceTree = "<group>"; };
+		DD5F94596DDF9AF172E97895 /* ComposeAddressFromView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposeAddressFromView.swift; sourceTree = "<group>"; };
 		DD5F94A6A5417BE0BFCC75DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
 		DD5F9674A81F6990067A3BFB /* ComposeEmailSelectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposeEmailSelectionView.swift; sourceTree = "<group>"; };
 		DD5F97A743EDDD85EE909A8E /* mail-iosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "mail-iosTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -160,7 +160,7 @@
 		DD5F942B0D5A685DDD225792 /* compose */ = {
 			isa = PBXGroup;
 			children = (
-				DD5F94596DDF9AF172E97895 /* ComposeAddressSelectorView.swift */,
+				DD5F94596DDF9AF172E97895 /* ComposeAddressFromView.swift */,
 				DD5F916C4317CABF18EDF4A1 /* ComposeAddressInputView.swift */,
 				DD5F9674A81F6990067A3BFB /* ComposeEmailSelectionView.swift */,
 			);
@@ -436,7 +436,7 @@
 				DD5F991067DA8B1F61D2ABC8 /* ComposeViewController.swift in Sources */,
 				DD5F9D58CDEF0303485C2841 /* InboxThreadDragMarkerView.swift in Sources */,
 				DD5F9980993AA3EA4B4BAD1F /* InboxThreadTableViewCell.swift in Sources */,
-				DD5F91E5E69B0C45AF5446B1 /* ComposeAddressSelectorView.swift in Sources */,
+				DD5F91E5E69B0C45AF5446B1 /* ComposeAddressFromView.swift in Sources */,
 				DD5F988162F99E2079CEE558 /* ComposeAddressInputView.swift in Sources */,
 				DD5F9D30D856CDB9E93A2A88 /* ComposeEmailSelectionView.swift in Sources */,
 			);

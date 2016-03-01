@@ -69,6 +69,8 @@ struct APIHelpers {
 }
 
 class GmailAPI {
+    static var apiInstances: [GmailAPI] = []
+
     var _me: JSON?
 
     var helper: APIHelpers!
@@ -96,6 +98,8 @@ class GmailAPI {
 
         self.helper = APIHelpers()
         self.helper.api = self
+
+        GmailAPI.apiInstances.append(self)
 
         if let path = NSBundle.mainBundle().pathForResource("gmail", ofType: "plist"), dict = NSDictionary(contentsOfFile: path) {
             self.clientId = dict["CLIENT_ID"] as! String

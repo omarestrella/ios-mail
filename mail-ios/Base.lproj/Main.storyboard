@@ -113,8 +113,7 @@
                     <navigationItem key="navigationItem" title="Inbox" id="MQe-6f-Abt">
                         <barButtonItem key="rightBarButtonItem" title="Compose" id="dHx-Z8-CYc">
                             <connections>
-                                <action selector="didPressCompose:" destination="TGN-Y1-znF" id="W7u-Zc-GTK"/>
-                                <segue destination="uy8-Un-qRH" kind="presentation" id="0gV-Yv-yRD"/>
+                                <segue destination="uy8-Un-qRH" kind="presentation" identifier="toComposeViewController" id="0gV-Yv-yRD"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

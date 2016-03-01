@@ -44,9 +44,14 @@ class InboxViewController: UITableViewController, ThreadCellDelegate {
         }
     }
 
-    @IBAction func didPressCompose(sender: UIBarButtonItem) {
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "toComposeViewController" {
 
+        }
+
+        super.prepareForSegue(segue, sender: sender)
     }
+
 }
 
 class InboxDataSource: NSObject, UITableViewDataSource {

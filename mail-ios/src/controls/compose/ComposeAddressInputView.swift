@@ -9,8 +9,8 @@ import UIKit
 import SnapKit
 
 class ComposeAddressInputView: UIView {
-    let label: UILabel = UILabel(frame: CGRectZero)
-    let textField: UITextField = UITextField(frame: CGRectZero)
+    let label = UILabel(frame: CGRectZero)
+    let textField = UITextField(frame: CGRectZero)
 
     convenience init() {
         self.init(frame: CGRectZero)
@@ -36,8 +36,10 @@ class ComposeAddressInputView: UIView {
         self.addSubview(label)
         self.addSubview(textField)
 
+        let fontSize = CGFloat(14)
+
         label.text = "To:"
-        label.font = UIFont.systemFontOfSize(13)
+        label.font = UIFont.systemFontOfSize(fontSize)
         label.sizeToFit()
         label.snp_makeConstraints { (make) -> Void in
             make.top.bottom.equalTo(self)
@@ -45,7 +47,7 @@ class ComposeAddressInputView: UIView {
         }
 
         textField.borderStyle = .None
-        textField.font = UIFont.systemFontOfSize(13)
+        textField.font = UIFont.systemFontOfSize(fontSize)
         textField.autocapitalizationType = .None
         textField.snp_makeConstraints { (make) -> Void in
             make.top.bottom.right.equalTo(self)

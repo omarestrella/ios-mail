@@ -11,7 +11,7 @@ import SnapKit
 class ComposeViewController: UIViewController {
     var navigationBar: UINavigationBar!
     let toAddressInput = ComposeAddressInputView()
-    let fromAddressInput = ComposeAddressSelectorView()
+    let fromAddressInput = ComposeAddessFromView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
