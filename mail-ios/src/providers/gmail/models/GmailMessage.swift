@@ -22,12 +22,16 @@ class GmailMessage: GmailModel {
     }
 
     var message: String {
-        let parts = data?["payload"]["parts"].array
-        if parts?.count > 0 {
-            if let messageBody: String = parts?.last?["body"]["data"].string {
+//        let parts: Array = data?["payload"]["parts"].array
+        if let parts = data?["payload"]["parts"].array {
+            if parts.isEmpty {
+                return ""
+            }
+
+            if let messageBody: String = parts.last?["body"]["data"].string {
                 let base64Message = messageBody
                     .stringByReplacingOccurrencesOfString("-", withString: "+")
-                    .stringByReplacingOccurrencesOfString("_", withString: "/");
+                    .stringByReplacingOccurrencesOfString("_", withString: "/")
                 let data = NSData(base64EncodedString: base64Message, options: NSDataBase64DecodingOptions(rawValue: 0))
                 return String(data: data!, encoding: NSUTF8StringEncoding)!
             }

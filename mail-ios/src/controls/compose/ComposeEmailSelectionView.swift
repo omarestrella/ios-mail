@@ -3,6 +3,8 @@
 // Copyright (c) 2016 bitcreative. All rights reserved.
 //
 
+// swiftlint:disable legacy_constant
+
 import Foundation
 import UIKit
 
@@ -17,8 +19,6 @@ class ComposeEmailSelectionView: UIView {
 
     convenience init() {
         self.init(frame: CGRectZero)
-
-        self.currentAccount = accounts.first
 
         self.setup()
     }
@@ -35,11 +35,9 @@ class ComposeEmailSelectionView: UIView {
         self.setup()
     }
 
-    func handleEmailTap(sender: UITapGestureRecognizer) {
-        log.debug("Tapped!")
-    }
-
     private func setup() {
+        self.currentAccount = accounts.first
+
         self.addSubview(emailLabel)
 
         let fontSize = CGFloat(14)
@@ -50,12 +48,5 @@ class ComposeEmailSelectionView: UIView {
         emailLabel.snp_makeConstraints { (make) -> Void in
             make.left.right.top.bottom.equalTo(self)
         }
-
-        self.setupGestures()
-    }
-
-    private func setupGestures() {
-        let tapGesture = UITapGestureRecognizer(target: self, action: Selector("handleEmailTap:"))
-        self.addGestureRecognizer(tapGesture)
     }
 }

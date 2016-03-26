@@ -9,7 +9,7 @@ import PromiseKit
 import RealmSwift
 import p2_OAuth2
 
-internal var _accounts: [GmailAccount] = []
+private var _accounts: [GmailAccount] = []
 
 class GmailAccount: GmailModel {
     var api: GmailAPI!
@@ -44,9 +44,13 @@ class GmailAccount: GmailModel {
 
     func loadProfile() -> Promise<GmailAccount> {
         return api.me().then { json in
-            let realm = try! Realm()
-            try! realm.write {
-                self.email = json["emailAddress"].string!
+            do {
+                let realm = try Realm()
+                try realm.write {
+                    self.email = json["emailAddress"].string!
+                }
+            } catch {
+                log.error("Could not save profile email address")
             }
 
             return Promise(self)
@@ -54,18 +58,21 @@ class GmailAccount: GmailModel {
     }
 
     static func allAccounts() -> [GmailAccount] {
-        if _accounts.count > 0 {
+        if !_accounts.isEmpty {
             return _accounts
         }
 
         var accounts: [GmailAccount] = []
-        let realm = try! Realm()
-        for account in realm.objects(GmailAccount) {
-            accounts.append(account)
-
-            if account.api == nil {
-                account.api = GmailAPI(account: account)
+        do {
+            let realm = try Realm()
+            for account in realm.objects(GmailAccount) {
+                accounts.append(account)
+                if account.api == nil {
+                    account.api = GmailAPI(account: account)
+                }
             }
+        } catch {
+            log.error("Could not read accounts from database")
         }
 
         _accounts = accounts

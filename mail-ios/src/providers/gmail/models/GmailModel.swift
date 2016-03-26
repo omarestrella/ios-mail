@@ -10,9 +10,13 @@ import RealmSwift
 
 class GmailModel: Object {
     func save() {
-        let realm = try! Realm()
-        try! realm.write {
-            realm.add(self, update: true)
+        do {
+            let realm = try Realm()
+            try realm.write {
+                realm.add(self, update: true)
+            }
+        } catch {
+            log.error("Could not save GmailModel")
         }
     }
 }

@@ -45,23 +45,26 @@ struct APIHelpers {
         }
     }
 
-    func request(path: String, type: Alamofire.Method? = .GET, parameters: [String:AnyObject]? = nil, headers: [String:String]? = nil) -> Promise<JSON> {
+    func request(path: String,
+                 type: Alamofire.Method? = .GET,
+                 parameters: [String:AnyObject]? = nil,
+                 headers: [String:String]? = nil) -> Promise<JSON> {
         let url = resource(path)
         let authHeader = api.authHeader
 
         return Promise { fulfill, fail in
-            Alamofire.request(type!, url, parameters: parameters, headers: authHeader).response { request, response, data, error in
-                log.debug("Made request with: \(type), \(response?.statusCode), \(url), \(parameters), \(authHeader)")
-                if response?.statusCode == 401 {
+            Alamofire.request(type!, url, parameters: parameters, headers: authHeader).response { _, resp, data, err in
+                log.debug("Made request with: \(type), \(resp?.statusCode), \(url), \(parameters), \(authHeader)")
+                if resp?.statusCode == 401 {
                     self.refreshAccount().then { json -> Void in
                         self.api.setAccessToken(json["access_token"].string!)
                         self.request(path, parameters: parameters, headers: headers).then { fulfill($0) }
                     }
-                } else if let _ = error {
-                    log.error("Response error: \(error)")
-                    fail(error!)
-                } else if let _ = data {
-                    fulfill(JSON(data: data!))
+                } else if let err = err {
+                    log.error("Response error: \(err)")
+                    fail(err)
+                } else if let jsonData = data {
+                    fulfill(JSON(data: jsonData))
                 }
             }
         }
@@ -71,7 +74,7 @@ struct APIHelpers {
 class GmailAPI {
     static var apiInstances: [GmailAPI] = []
 
-    var _me: JSON?
+    private var _me: JSON?
 
     var helper: APIHelpers!
     var account: GmailAccount!
@@ -96,14 +99,19 @@ class GmailAPI {
     init(account: GmailAccount) {
         self.account = account
 
-        self.helper = APIHelpers()
-        self.helper.api = self
+        helper = APIHelpers()
+        helper.api = self
 
         GmailAPI.apiInstances.append(self)
 
-        if let path = NSBundle.mainBundle().pathForResource("gmail", ofType: "plist"), dict = NSDictionary(contentsOfFile: path) {
-            self.clientId = dict["CLIENT_ID"] as! String
-            self.clientSecret = dict["CLIENT_SECRET"] as! String
+        let path = NSBundle.mainBundle().pathForResource("gmail", ofType: "plist")
+        if let path = path, dict = NSDictionary(contentsOfFile: path) {
+            let storedId = dict["CLIENT_ID"]
+            let storedSecret = dict["CLIENT_SECRET"]
+            if let storedId = storedId as? String, let storedSecret = storedSecret as? String {
+                clientId = storedId as String
+                clientSecret = storedSecret as String
+            }
         }
     }
 
@@ -163,9 +171,13 @@ class GmailAPI {
     }
 
     func setAccessToken(accessToken: String) {
-        let realm = try! Realm()
-        try! realm.write {
-            account.accessToken = accessToken
+        do {
+            let realm = try Realm()
+            try realm.write {
+                self.account.accessToken = accessToken
+            }
+        } catch {
+            log.error("Could not set accessToken: \(accessToken)")
         }
     }
 }

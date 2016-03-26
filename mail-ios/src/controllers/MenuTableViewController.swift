@@ -53,10 +53,12 @@ class MenuTableViewController: UITableViewController, GmailAuthenticatorDelegate
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "segueInbox" {
-            let indexPath = sender as! NSIndexPath
-            let vc = segue.destinationViewController as! InboxViewController
-            if indexPath.row > 0 {
-                vc.account = accounts[indexPath.row - 1]
+            if let indexPath = sender as? NSIndexPath {
+                if let vc = segue.destinationViewController as? InboxViewController {
+                    if indexPath.row > 0 {
+                        vc.account = accounts[indexPath.row - 1]
+                    }
+                }
             }
         }
     }

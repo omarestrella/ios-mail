@@ -10,14 +10,23 @@ import RealmSwift
 import PromiseKit
 import Alamofire
 
-struct AuthenticationCodes {
-    let LoginSuccess: String = "LoginSuccess"
-    let LoginFailure: String = "LoginFailure"
-    let LogoutSuccess: String = "LogoutSuccess"
-}
-
 class GmailAuthenticator: NSObject {
-    static let NotificationCodes = AuthenticationCodes()
+    enum NotificationCodes: CustomStringConvertible {
+        case LoginSuccess
+        case LoginFailure
+        case LogoutSuccess
+
+        var description: String {
+            switch self {
+            case .LoginSuccess:
+                return "LoginSuccess"
+            case .LoginFailure:
+                return "LoginFailure"
+            case .LogoutSuccess:
+                return "LogoutSuccess"
+            }
+        }
+    }
 
     var delegate: GmailAuthenticatorDelegate?
     var oauthInstance: GmailOAuth2?
@@ -54,15 +63,20 @@ class GmailAuthenticator: NSObject {
     }
 
     func getOauthInstance() -> GmailOAuth2 {
-        if oauthInstance != nil {
-            return oauthInstance!
+        if let instance = oauthInstance {
+            return instance
         }
 
         var clientId = ""
         var clientSecret = ""
-        if let path = NSBundle.mainBundle().pathForResource("gmail", ofType: "plist"), dict = NSDictionary(contentsOfFile: path) {
-            clientId = dict["CLIENT_ID"] as! String
-            clientSecret = dict["CLIENT_SECRET"] as! String
+        let path = NSBundle.mainBundle().pathForResource("gmail", ofType: "plist")
+        if let path = path, dict = NSDictionary(contentsOfFile: path) {
+            let storedId = dict["CLIENT_ID"]
+            let storedSecret = dict["CLIENT_SECRET"]
+            if let storedId = storedId as? String, let storedSecret = storedSecret as? String {
+                clientId = storedId as String
+                clientSecret = storedSecret as String
+            }
         }
 
         let settings = [
@@ -80,7 +94,7 @@ class GmailAuthenticator: NSObject {
 
     deinit {
         NSNotificationCenter.defaultCenter().removeObserver(self,
-            name: GmailAuthenticator.NotificationCodes.LoginSuccess,
+            name: GmailAuthenticator.NotificationCodes.LoginSuccess.description,
             object: nil)
     }
 }

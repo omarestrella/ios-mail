@@ -22,7 +22,11 @@ class GmailThread: GmailModel {
 
     var messages: [GmailMessage] {
         if let messageData = data["messages"].array {
-            return try! messageData.map { GmailMessage(data: $0, thread: self) }
+            do {
+                return try messageData.map { GmailMessage(data: $0, thread: self) }
+            } catch {
+                return []
+            }
         }
 
         return []

@@ -69,7 +69,12 @@ class InboxDataSource: NSObject, UITableViewDataSource {
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell: InboxThreadTableViewCell = tableView.dequeueReusableCellWithIdentifier("messageCell") as! InboxThreadTableViewCell
+        let tableCell = tableView.dequeueReusableCellWithIdentifier("messageCell", forIndexPath: indexPath)
+        guard let cell: InboxThreadTableViewCell = tableCell as? InboxThreadTableViewCell
+        else {
+            return tableCell
+        }
+
         cell.setupData(self.threads[indexPath.row], delegate: cellDelegate)
         return cell
     }

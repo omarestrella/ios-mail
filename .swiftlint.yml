@@ -1,0 +1,14 @@
+opt_in_rules:
+  - empty_count
+line_length: 120
+variable_name:
+  min_length: 2
+trailing_semicolon:
+  severity: error
+included:
+  - mail-ios
+  - mail-iosTests
+excluded:
+  - Pods
+  - Products
+  - Frameworks

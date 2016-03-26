@@ -14,6 +14,7 @@
 		66D46D931C31B05F00E8F906 /* Pods_mail_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66D46D921C31B05F00E8F906 /* Pods_mail_ios.framework */; };
 		DD5F90ABBFB88EC2BF7FE2B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5F9CF9548C13CB2FF00763 /* AppDelegate.swift */; };
 		DD5F9145991B5EEEC8BD1C72 /* GmailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5F9D2BE0D25181404AD3F5 /* GmailModel.swift */; };
+		DD5F91A373F62255A0473B00 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = DD5F9291EE9E4B001234F29D /* .swiftlint.yml */; };
 		DD5F91E5E69B0C45AF5446B1 /* ComposeAddressFromView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5F94596DDF9AF172E97895 /* ComposeAddressFromView.swift */; };
 		DD5F927D85EE13383951D764 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD5F997CB1CE5CCCD847AA23 /* Assets.xcassets */; };
 		DD5F961539E5539D79649C73 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DD5F9FCE8CB81C2A3DC4C78F /* Info.plist */; };
@@ -26,11 +27,13 @@
 		DD5F9980993AA3EA4B4BAD1F /* InboxThreadTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5F90FC00CBF0FEBB4BF3FF /* InboxThreadTableViewCell.swift */; };
 		DD5F9A8782D34451F8178F06 /* GmailAuthenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5F923AF79F3B58B3980F7B /* GmailAuthenticator.swift */; };
 		DD5F9C080AA3B806DBA42EAA /* GmailThread.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5F9B848035D8474E0406C9 /* GmailThread.swift */; };
+		DD5F9C967DDB99F1F5AE0940 /* swift-lint.sh in Resources */ = {isa = PBXBuildFile; fileRef = DD5F91F5C2DAF96F0581523F /* swift-lint.sh */; };
 		DD5F9CAD4E98C1E276AFC8F9 /* GmailMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5F91D610C2AAE204D4F209 /* GmailMessage.swift */; };
 		DD5F9D30D856CDB9E93A2A88 /* ComposeEmailSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5F9674A81F6990067A3BFB /* ComposeEmailSelectionView.swift */; };
 		DD5F9D58CDEF0303485C2841 /* InboxThreadDragMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5F9F2A41BDAC89AA1FC3C0 /* InboxThreadDragMarkerView.swift */; };
 		DD5F9D9D7C50DAEEE414B234 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD5F9E385826317203DEF52F /* Main.storyboard */; };
 		DD5F9DC737CEC4ADF69E3EE2 /* mail_iosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5F92CC4E1423D982C63D6F /* mail_iosTests.swift */; };
+		DD5F9F0C9EAE67CA6FD5DF5F /* AccountsPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5F96D20EA15FF1447148E2 /* AccountsPopoverViewController.swift */; };
 		DD5F9F63EF2B3FE6B82F1BB1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD5F9DCEF9BB3C490DA1C942 /* LaunchScreen.storyboard */; };
 		DD5F9FE469C08A6A31DFB245 /* GmailOAuth2.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5F9E68125F57F25030E1A2 /* GmailOAuth2.swift */; };
 /* End PBXBuildFile section */
@@ -59,11 +62,14 @@
 		DD5F916C4317CABF18EDF4A1 /* ComposeAddressInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposeAddressInputView.swift; sourceTree = "<group>"; };
 		DD5F91B995BB07B1B9FB584A /* Cinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD5F91D610C2AAE204D4F209 /* GmailMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GmailMessage.swift; sourceTree = "<group>"; };
+		DD5F91F5C2DAF96F0581523F /* swift-lint.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "swift-lint.sh"; sourceTree = "<group>"; };
 		DD5F923AF79F3B58B3980F7B /* GmailAuthenticator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GmailAuthenticator.swift; sourceTree = "<group>"; };
+		DD5F9291EE9E4B001234F29D /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = file.yml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		DD5F92CC4E1423D982C63D6F /* mail_iosTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mail_iosTests.swift; sourceTree = "<group>"; };
 		DD5F94596DDF9AF172E97895 /* ComposeAddressFromView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposeAddressFromView.swift; sourceTree = "<group>"; };
 		DD5F94A6A5417BE0BFCC75DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
 		DD5F9674A81F6990067A3BFB /* ComposeEmailSelectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposeEmailSelectionView.swift; sourceTree = "<group>"; };
+		DD5F96D20EA15FF1447148E2 /* AccountsPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountsPopoverViewController.swift; sourceTree = "<group>"; };
 		DD5F97A743EDDD85EE909A8E /* mail-iosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "mail-iosTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD5F97DA19C0B868F1CB9830 /* mail-ios-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "mail-ios-Bridging-Header.h"; sourceTree = "<group>"; };
 		DD5F997CB1CE5CCCD847AA23 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -163,6 +169,7 @@
 				DD5F94596DDF9AF172E97895 /* ComposeAddressFromView.swift */,
 				DD5F916C4317CABF18EDF4A1 /* ComposeAddressInputView.swift */,
 				DD5F9674A81F6990067A3BFB /* ComposeEmailSelectionView.swift */,
+				DD5F96D20EA15FF1447148E2 /* AccountsPopoverViewController.swift */,
 			);
 			path = compose;
 			sourceTree = "<group>";
@@ -241,6 +248,8 @@
 				DD5F9B35D1AE84CBB073A711 /* mail-iosTests */,
 				8F795062167040ABFBBC0D9F /* Pods */,
 				CE17ADBDDFA17FBD47CEE54C /* Frameworks */,
+				DD5F91F5C2DAF96F0581523F /* swift-lint.sh */,
+				DD5F9291EE9E4B001234F29D /* .swiftlint.yml */,
 			);
 			sourceTree = "<group>";
 		};
@@ -351,6 +360,8 @@
 				DD5F9D9D7C50DAEEE414B234 /* Main.storyboard in Resources */,
 				DD5F9F63EF2B3FE6B82F1BB1 /* LaunchScreen.storyboard in Resources */,
 				DD5F979F7AFE385A1C3A559B /* gmail.plist in Resources */,
+				DD5F9C967DDB99F1F5AE0940 /* swift-lint.sh in Resources */,
+				DD5F91A373F62255A0473B00 /* .swiftlint.yml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -439,6 +450,7 @@
 				DD5F91E5E69B0C45AF5446B1 /* ComposeAddressFromView.swift in Sources */,
 				DD5F988162F99E2079CEE558 /* ComposeAddressInputView.swift in Sources */,
 				DD5F9D30D856CDB9E93A2A88 /* ComposeEmailSelectionView.swift in Sources */,
+				DD5F9F0C9EAE67CA6FD5DF5F /* AccountsPopoverViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

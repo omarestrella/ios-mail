@@ -3,6 +3,8 @@
 // Copyright (c) 2016 bitcreative. All rights reserved.
 //
 
+// swiftlint:disable legacy_constant
+
 import Foundation
 import UIKit
 

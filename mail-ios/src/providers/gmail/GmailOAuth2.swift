@@ -36,19 +36,26 @@ class GmailOAuth2: OAuth2Swift {
     }
 
     func authorize() {
-        let url = NSURL(string: settings["redirect_uri"]!)!
-        let scope = settings["scope"]!
+        if let uri = settings["redirect_uri"], let scope = settings["scope"] {
+            if let url = NSURL(string: uri) {
+                self.authorize_url_handler = SafariURLHandler(viewController: authorizeContext!)
 
-        self.authorize_url_handler = SafariURLHandler(viewController: authorizeContext!)
-
-        self.authorizeWithCallbackURL(url, scope: scope, state: "",
-            success: { credentials, response, parameters in
-                let json = parameters as! [String:AnyObject]
-                self.credentials = json
-                self.onAuthorize(credentials: json)
-            },
-            failure: { error in
-                self.onFailure(error: error)
-            })
+                self.authorizeWithCallbackURL(url, scope: scope, state: "",
+                    success: {
+                        credentials, response, parameters in
+                        if let json = parameters as? [String:AnyObject] {
+                            self.credentials = json
+                            self.onAuthorize(credentials: json)
+                        } else {
+                            let error = NSError(domain: "GmailOauth2#authorize", code: 0, userInfo: nil)
+                            self.onFailure(error: error)
+                        }
+                    },
+                    failure: {
+                        error in
+                        self.onFailure(error: error)
+                    })
+            }
+        }
     }
 }

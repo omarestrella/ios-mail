@@ -53,11 +53,12 @@ class InboxThreadTableViewCell: UITableViewCell {
     }
 
     override func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer) -> Bool {
-        if gestureRecognizer is UIPanGestureRecognizer {
-            let recognizer = gestureRecognizer as! UIPanGestureRecognizer
-            let translation = recognizer.translationInView(self)
-            return translation.x != 0.0
-        }
+//        if gestureRecognizer is UIPanGestureRecognizer {
+            if let recognizer = gestureRecognizer as? UIPanGestureRecognizer {
+                let translation = recognizer.translationInView(self)
+                return translation.x != 0.0
+            }
+//        }
 
         return false
     }
