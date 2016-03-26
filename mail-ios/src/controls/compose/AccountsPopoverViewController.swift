@@ -18,13 +18,27 @@ class AccountsPopoverViewController: UITableViewController {
 }
 
 class AccountsPopoverDatasource: NSObject, UITableViewDataSource {
+    let accounts = GmailAccount.allAccounts()
+
+
+
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Accounts"
+    }
+
+
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return GmailAccount.allAccounts().count
+        return accounts.count
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
-        cell.textLabel?.text = "Cell"
+        let index = indexPath.row
+        cell.textLabel?.text = accounts[index].email
         return cell
     }
 

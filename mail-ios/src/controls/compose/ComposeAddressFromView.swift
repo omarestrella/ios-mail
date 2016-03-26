@@ -47,4 +47,8 @@ class ComposeAddessFromView: UIView {
             make.left.equalTo(fromLabel.snp_right).offset(10)
         }
     }
+
+    public func setAccount(account: GmailAccount) {
+        emailSelectionView.setAccount(account)
+    }
 }

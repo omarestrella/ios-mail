@@ -36,17 +36,22 @@ class ComposeEmailSelectionView: UIView {
     }
 
     private func setup() {
-        self.currentAccount = accounts.first
+        currentAccount = accounts.first
 
         self.addSubview(emailLabel)
 
         let fontSize = CGFloat(14)
 
-        emailLabel.text = self.currentAccount?.email
+        emailLabel.text = currentAccount?.email
         emailLabel.font = UIFont.systemFontOfSize(fontSize)
         emailLabel.textColor = self.tintColor
         emailLabel.snp_makeConstraints { (make) -> Void in
             make.left.right.top.bottom.equalTo(self)
         }
+    }
+
+    public func setAccount(account: GmailAccount) {
+        currentAccount = account
+        emailLabel.text = currentAccount?.email
     }
 }

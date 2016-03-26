@@ -13,10 +13,14 @@ class ComposeViewController: UIViewController, UIPopoverPresentationControllerDe
     let toAddressInput = ComposeAddressInputView()
     let fromAddressInput = ComposeAddessFromView()
 
+    let accounts = GmailAccount.allAccounts()
+    var fromAccount: GmailAccount? = nil
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         navigationBar = self.navigationController?.navigationBar
+        fromAccount = accounts.first
 
         self.setup()
     }
@@ -83,6 +87,10 @@ class ComposeViewController: UIViewController, UIPopoverPresentationControllerDe
     // swiftlint:enable line_length
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let account = accounts[indexPath.row]
+        fromAccount = account
+        fromAddressInput.setAccount(account)
+
         self.dismissViewControllerAnimated(false, completion: nil)
     }
 
