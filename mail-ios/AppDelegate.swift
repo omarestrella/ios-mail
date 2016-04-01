@@ -64,8 +64,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             try NSFileManager.defaultManager().createDirectoryAtPath("/tmp/realm",
                 withIntermediateDirectories: false,
                 attributes: nil)
-        } catch {
-            log.debug("Couldn't create /tmp/realm for development")
+        } catch let err as NSError {
+            log.debug("Couldn't create /tmp/realm for development: \(err)")
         }
         config.path = "/tmp/realm/db.realm"
         Realm.Configuration.defaultConfiguration = config

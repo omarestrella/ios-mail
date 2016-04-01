@@ -3,6 +3,8 @@
 // Copyright (c) 2016 bitcreative. All rights reserved.
 //
 
+// swiftlint:disable legacy_constant
+
 import Foundation
 import UIKit
 
@@ -10,14 +12,19 @@ import SnapKit
 
 class ComposeViewController: UIViewController, UIPopoverPresentationControllerDelegate, UITableViewDelegate {
     var navigationBar: UINavigationBar!
-    let toAddressInput = ComposeAddressInputView()
-    let fromAddressInput = ComposeAddessFromView()
+    var toAddressInput: ComposeAddressInputView!
+    var fromAddressInput: ComposeAddessFromView!
+    var messageBodyInput: ComposeMessageBodyView!
 
     let accounts = GmailAccount.allAccounts()
     var fromAccount: GmailAccount? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        toAddressInput = ComposeAddressInputView()
+        fromAddressInput = ComposeAddessFromView()
+        messageBodyInput = ComposeMessageBodyView()
 
         navigationBar = self.navigationController?.navigationBar
         fromAccount = accounts.first
@@ -32,6 +39,7 @@ class ComposeViewController: UIViewController, UIPopoverPresentationControllerDe
     private func setup() {
         self.view.addSubview(fromAddressInput)
         self.view.addSubview(toAddressInput)
+        self.view.addSubview(messageBodyInput)
 
         fromAddressInput.snp_makeConstraints { (make) -> Void in
             make.top.equalTo(self.view).offset(navigationBar.frame.height + 30)
@@ -44,6 +52,11 @@ class ComposeViewController: UIViewController, UIPopoverPresentationControllerDe
             make.top.equalTo(fromAddressInput.snp_bottom).offset(8)
             make.width.equalTo(self.view)
             make.height.equalTo(20)
+        }
+
+        messageBodyInput.snp_makeConstraints { (make) -> Void in
+            make.top.equalTo(toAddressInput.snp_bottom).offset(8)
+            make.bottom.width.equalTo(self.view)
         }
 
         self.setupGestures()
@@ -106,12 +119,7 @@ class ComposeViewController: UIViewController, UIPopoverPresentationControllerDe
     }
 
     @objc func didPressSend(sender: UIBarButtonItem) {
-        let message = GmailMessage.buildMessage(from: "gzusfr3ak@gmail.com", to: ["gzusfr3ak@email.com"],
-            subject: "Subject", message: "Message")
-        log.debug(message)
-
-        let account: GmailAccount = GmailAccount.allAccounts()[0]
-        account.api.sendMessage(to: ["gzusfr3ak@gmail.com"], subject: "Subject", message: "Message")
+        fromAccount?.api.sendMessage(to: toAddressInput.addresses, subject: "Subject", message: "Message")
     }
 
     @IBAction func didPressCancel(sender: UIBarButtonItem) {

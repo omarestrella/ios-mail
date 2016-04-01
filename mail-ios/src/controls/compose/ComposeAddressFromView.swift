@@ -48,7 +48,7 @@ class ComposeAddessFromView: UIView {
         }
     }
 
-    public func setAccount(account: GmailAccount) {
+    func setAccount(account: GmailAccount) {
         emailSelectionView.setAccount(account)
     }
 }

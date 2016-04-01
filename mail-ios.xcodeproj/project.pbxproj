@@ -20,6 +20,7 @@
 		DD5F961539E5539D79649C73 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DD5F9FCE8CB81C2A3DC4C78F /* Info.plist */; };
 		DD5F968BD3C9B56F058A532F /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DD5F94A6A5417BE0BFCC75DE /* Info.plist */; };
 		DD5F96C5B589F0C00D491D7B /* GmailAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5F9A80B7B94C1BC7568648 /* GmailAccount.swift */; };
+		DD5F973996A2489E96DAD6D5 /* ComposeMessageBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5F9411F59C49AEADCE5CF1 /* ComposeMessageBodyView.swift */; };
 		DD5F979F7AFE385A1C3A559B /* gmail.plist in Resources */ = {isa = PBXBuildFile; fileRef = DD5F9F8123D882CB0333F948 /* gmail.plist */; };
 		DD5F988162F99E2079CEE558 /* ComposeAddressInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5F916C4317CABF18EDF4A1 /* ComposeAddressInputView.swift */; };
 		DD5F989B504BB6F203025D74 /* InboxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5F9F4F561312DDA3ECE3F2 /* InboxViewController.swift */; };
@@ -66,6 +67,7 @@
 		DD5F923AF79F3B58B3980F7B /* GmailAuthenticator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GmailAuthenticator.swift; sourceTree = "<group>"; };
 		DD5F9291EE9E4B001234F29D /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = file.yml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		DD5F92CC4E1423D982C63D6F /* mail_iosTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mail_iosTests.swift; sourceTree = "<group>"; };
+		DD5F9411F59C49AEADCE5CF1 /* ComposeMessageBodyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposeMessageBodyView.swift; sourceTree = "<group>"; };
 		DD5F94596DDF9AF172E97895 /* ComposeAddressFromView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposeAddressFromView.swift; sourceTree = "<group>"; };
 		DD5F94A6A5417BE0BFCC75DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
 		DD5F9674A81F6990067A3BFB /* ComposeEmailSelectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposeEmailSelectionView.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 				DD5F916C4317CABF18EDF4A1 /* ComposeAddressInputView.swift */,
 				DD5F9674A81F6990067A3BFB /* ComposeEmailSelectionView.swift */,
 				DD5F96D20EA15FF1447148E2 /* AccountsPopoverViewController.swift */,
+				DD5F9411F59C49AEADCE5CF1 /* ComposeMessageBodyView.swift */,
 			);
 			path = compose;
 			sourceTree = "<group>";
@@ -436,6 +439,7 @@
 				DD5F988162F99E2079CEE558 /* ComposeAddressInputView.swift in Sources */,
 				DD5F9D30D856CDB9E93A2A88 /* ComposeEmailSelectionView.swift in Sources */,
 				DD5F9F0C9EAE67CA6FD5DF5F /* AccountsPopoverViewController.swift in Sources */,
+				DD5F973996A2489E96DAD6D5 /* ComposeMessageBodyView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
