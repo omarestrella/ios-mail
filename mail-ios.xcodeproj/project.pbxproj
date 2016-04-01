@@ -293,7 +293,6 @@
 				DD5F9F3F22C43A3F9D87BB94 /* Resources */,
 				7376E774DC3337B7AE3E8077 /* Embed Pods Frameworks */,
 				16202E2ACED1A23EF4A21E02 /* Copy Pods Resources */,
-				7A3384DA7F39C74304ED00BA /* Tailor */,
 			);
 			buildRules = (
 			);
@@ -412,20 +411,6 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-mail-ios/Pods-mail-ios-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
-		};
-		7A3384DA7F39C74304ED00BA /* Tailor */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = Tailor;
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if hash tailor 2>/dev/null; then\n  tailor\nelse\n  echo \"warning: Please install Tailor from https://tailor.sh\"\nfi";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -575,7 +560,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -625,7 +610,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;

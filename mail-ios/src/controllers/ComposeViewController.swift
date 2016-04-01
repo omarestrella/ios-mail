@@ -47,11 +47,22 @@ class ComposeViewController: UIViewController, UIPopoverPresentationControllerDe
         }
 
         self.setupGestures()
+        self.attachButtons()
     }
 
     func setupGestures() {
         let tapGesture = UITapGestureRecognizer(target: self, action: Selector("handleEmailTap:"))
         fromAddressInput.addGestureRecognizer(tapGesture)
+    }
+
+    func attachButtons() {
+        let leftButton = UIBarButtonItem(title: "Cancel", style: .Plain, target: self,
+            action: Selector("didPressCancel:"))
+        let rightButton = UIBarButtonItem(title: "Send", style: .Done, target: self,
+            action: Selector("didPressSend:"))
+
+        navigationItem.rightBarButtonItem = rightButton
+        navigationItem.leftBarButtonItem = leftButton
     }
 
     func handleEmailTap(sender: UITapGestureRecognizer) {
@@ -94,6 +105,14 @@ class ComposeViewController: UIViewController, UIPopoverPresentationControllerDe
         self.dismissViewControllerAnimated(false, completion: nil)
     }
 
+    @objc func didPressSend(sender: UIBarButtonItem) {
+        let message = GmailMessage.buildMessage(from: "gzusfr3ak@gmail.com", to: ["gzusfr3ak@email.com"],
+            subject: "Subject", message: "Message")
+        log.debug(message)
+
+        let account: GmailAccount = GmailAccount.allAccounts()[0]
+        account.api.sendMessage(to: ["gzusfr3ak@gmail.com"], subject: "Subject", message: "Message")
+    }
 
     @IBAction func didPressCancel(sender: UIBarButtonItem) {
         self.dismissViewControllerAnimated(true, completion: {})

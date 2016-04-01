@@ -22,7 +22,6 @@ class GmailMessage: GmailModel {
     }
 
     var message: String {
-//        let parts: Array = data?["payload"]["parts"].array
         if let parts = data?["payload"]["parts"].array {
             if parts.isEmpty {
                 return ""
@@ -75,6 +74,22 @@ class GmailMessage: GmailModel {
             }
         }
 
+        return ""
+    }
+
+    static func buildMessage(from from: String, to: [String], subject: String, message: String) -> String {
+        let builder = MCOMessageBuilder()
+        builder.header.from = MCOAddress(mailbox: from)
+        builder.header.to = to.map { MCOAddress(mailbox: $0) }
+        builder.header.subject = subject
+        builder.textBody = message
+
+        let stringData = builder.data()
+        if let encodedString = stringData?.base64EncodedStringWithOptions(NSDataBase64EncodingOptions(rawValue: 0)) {
+            return encodedString
+                .stringByReplacingOccurrencesOfString("+", withString: "-")
+                .stringByReplacingOccurrencesOfString("/", withString: "_")
+        }
         return ""
     }
 

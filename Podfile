@@ -11,6 +11,7 @@ target 'mail-ios' do
     pod 'OAuthSwift', '~> 0.4.8'
     pod 'Regex', '~> 0.3.0'
     pod 'SnapKit', '~> 0.19.1'
+    pod 'mailcore2-ios', '~> 0.6.3'
 
     # debugging utilities
     pod 'netfox', '~> 1.7'

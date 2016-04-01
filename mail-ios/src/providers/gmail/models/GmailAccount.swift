@@ -7,7 +7,6 @@ import Foundation
 import PromiseKit
 
 import RealmSwift
-import p2_OAuth2
 
 private var _accounts: [GmailAccount] = []
 

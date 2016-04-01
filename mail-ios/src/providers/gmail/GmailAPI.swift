@@ -53,20 +53,21 @@ struct APIHelpers {
         let authHeader = api.authHeader
 
         return Promise { fulfill, fail in
-            Alamofire.request(type!, url, parameters: parameters, headers: authHeader).response { _, resp, data, err in
-                log.debug("Made request with: \(type), \(resp?.statusCode), \(url), \(parameters), \(authHeader)")
-                if resp?.statusCode == 401 {
-                    self.refreshAccount().then { json -> Void in
-                        self.api.setAccessToken(json["access_token"].string!)
-                        self.request(path, parameters: parameters, headers: headers).then { fulfill($0) }
+            Alamofire.request(type!, url, parameters: parameters, headers: authHeader, encoding: .JSON)
+                .response { _, resp, data, err in
+                    log.debug("Made request with: \(type), \(resp?.statusCode), \(url), \(parameters), \(authHeader)")
+                    if resp?.statusCode == 401 {
+                        self.refreshAccount().then { json -> Void in
+                            self.api.setAccessToken(json["access_token"].string!)
+                            self.request(path, parameters: parameters, headers: headers).then { fulfill($0) }
+                        }
+                    } else if let err = err {
+                        log.error("Response error: \(err)")
+                        fail(err)
+                    } else if let jsonData = data {
+                        fulfill(JSON(data: jsonData))
                     }
-                } else if let err = err {
-                    log.error("Response error: \(err)")
-                    fail(err)
-                } else if let jsonData = data {
-                    fulfill(JSON(data: jsonData))
                 }
-            }
         }
     }
 }
@@ -153,6 +154,19 @@ class GmailAPI {
             helper.request("me/threads/\(thread.id)", type: .DELETE).then { json -> Void in
                 log.debug("\(json)")
                 fulfill(json)
+            }
+        }
+    }
+
+    func sendMessage(to to: [String], subject: String, message: String) -> Promise<JSON> {
+        return Promise { fulfill, _ in
+            let messageData = GmailMessage.buildMessage(from: account.email, to: to,
+                subject: subject, message: message)
+            let parameters = [
+                "raw": messageData
+            ]
+            helper.request("me/messages/send", parameters: parameters, type: .POST).then { json -> Void in
+                log.debug("\(json)")
             }
         }
     }
