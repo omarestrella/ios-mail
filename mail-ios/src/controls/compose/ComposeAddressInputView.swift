@@ -126,18 +126,14 @@ class ComposeAddressInputView: UIView, UITextFieldDelegate {
     // swiftlint:enable line_length
 
     func getAttributedStrings() -> [NSAttributedString] {
-        let strings: [NSAttributedString]? = emailCollection.map { email -> NSAttributedString in
+        guard let strings: [NSAttributedString] = emailCollection.map({ email -> NSAttributedString in
             let string = NSMutableAttributedString(string: email)
             let color = self.tintColor
             let range = NSRange(location: 0, length: email.characters.count)
             string.addAttribute(NSForegroundColorAttributeName, value: color, range: range)
             return string
-        }
+        }) else { return [] }
 
-        if let strings = strings {
-            return strings
-        }
-
-        return []
+        return strings
     }
 }
